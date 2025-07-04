@@ -75,13 +75,12 @@ NAME_OF_BRANCH=master
 - `/home/path/to/your/directory/run_deploy.sh` -> путь к файлу run_deploy.sh
 - `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
 - `/home/path/to/your/directory/deploy_log.txt` -> путь к файлу с логами
-- `https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git` -> URL вашего репозитория
-user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
+- `https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git` -> URL вашего репозитория; user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
 - `master` -> название ветки
 
 #### 2.2 Создание лог файла
 
-Создайте пустой файл для логов в директории вашего проекта:
+Создайте пустой файл для логов в директории вашего проекта в терминале:
 
 ```bash
 touch deploy_log.txt
@@ -89,7 +88,7 @@ touch deploy_log.txt
 
 ### 3. Установка прав доступа
 
-Выполните следующие команды в директории с проектом:
+Выполните следующие команды в директории с проектом в терминале:
 
 ```bash
 # Права для конфигурационного файла и лог файла
