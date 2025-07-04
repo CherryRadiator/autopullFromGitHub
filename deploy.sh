@@ -1,9 +1,5 @@
 #!/bin/bash
 
-set -a
-source "/home/i/injener/test.smartesthome.ru/public_html/.env"
-set +a
-
 LOG="$PATH_TO_LOG_FILE"
 REPO_DIR="$PATH_TO_REPO_DIR"
 REMOTE_URL="$REMOTE_URL_REPO"
