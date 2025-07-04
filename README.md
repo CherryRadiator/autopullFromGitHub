@@ -24,7 +24,7 @@ public_html/
 2. Перейдите в **Settings** → **Webhooks**
 3. Нажмите **Add webhook**
 4. Заполните поля:
-   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к вашему файлу "deploy.php" на сервере
+   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к вашему файлу "deploy.php" на сервере (замените yourdomain.com на ваш домен)
    - **Content type**: `application/json`
    - **Secret**: Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
    - **SSL verification**: Enable SSL verification
