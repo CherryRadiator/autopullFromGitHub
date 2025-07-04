@@ -104,10 +104,10 @@ touch deploy_log.txt
 
 ```bash
 # Права для конфигурационного файла и лог файла
-chmod 664 .env deploy_log.txt
+chmod 777 .env deploy_log.txt
 
 # Права для исполняемых скриптов
-chmod +x deploy.sh run_deploy.sh
+chmod 777 deploy.sh run_deploy.sh && chmod +x deploy.sh run_deploy.sh
 ```
 
 ### 4. Проверка настроек
