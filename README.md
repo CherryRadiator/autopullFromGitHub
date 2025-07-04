@@ -61,7 +61,7 @@ PATH_TO_LOG_FILE=/home/path/to/your/directory/deploy_log.txt
 PATH_TO_REPO_DIR=/home/path/to/your/directory/
 
 # URL вашего GitHub репозитория (рекомендуется использовать https доступ с токеном, если репозиторий приватный*)
-REMOTE_URL_REPO=https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git
+REMOTE_URL_REPO=https://user_name:your_token@github.com/user_name/repository_name.git
 
 # Название ветки для деплоя
 NAME_OF_BRANCH=master
