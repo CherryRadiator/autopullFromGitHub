@@ -76,7 +76,8 @@ NAME_OF_BRANCH=master
 - `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
 - `/home/path/to/your/directory/deploy_log.txt` -> путь к файлу с логами
 - `https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git` -> URL вашего репозитория
-- `master` -> название ветки (если используете не master)
+user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
+- `master` -> название ветки
 
 #### 2.2 Создание лог файла
 
