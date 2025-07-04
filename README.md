@@ -19,13 +19,14 @@ public_html/
 
 ### 1. Создание webhook'а в GitHub
 
-1. Откройте ваш репозиторий на GitHub
+1. Откройте илии создайте, если еще нет ваш репозиторий на GitHub
 2. Перейдите в **Settings** → **Webhooks**
 3. Нажмите **Add webhook**
 4. Заполните поля:
-   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к файлу "deploy.php" на сервере
+   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к вашему файлу "deploy.php" на сервере
    - **Content type**: `application/json`
    - **Secret**: Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
+   - **SSL verification**: Enable SSL verification
    - **Which events would you like to trigger this webhook?**: Выберите "Just the push event"
    - **Active**: Поставьте галочку
 5. Нажмите **Add webhook**
@@ -49,7 +50,7 @@ PATH_TO_DEPLOY_SCRIPT=/home/path/to/your/deploy.sh
 # Путь к лог файлу
 PATH_TO_LOG_FILE=/home/path/to/your/deploy_log.txt
 
-# Путь к директории с репозиторием
+# Путь к директории с репозиторием (на beget это обычно public_html; он выглядит примерно так: /home/user/yourdomain/public_html) (чтобы узнать полный путь к директории репозитория можно использовать команду pwd из директории вашего public_html)
 PATH_TO_REPO_DIR=/home/path/to/your/directory/
 
 # URL вашего GitHub репозитория (рекомендуется использовать https доступ с токеном, если репозиторий приватный*)
