@@ -1,4 +1,10 @@
 #!/bin/bash
-cd /home/i/injener/test.smartesthome.ru/public_html || exit
-source .env
+
+source /home/path/to/your/directory/.env
+
+cd "$PATH_TO_REPO_DIR" || {
+  echo "[ERROR] Can't cd to $PATH_TO_REPO_DIR"
+  exit 1
+}
+
 "$PATH_TO_DEPLOY_SCRIPT"
