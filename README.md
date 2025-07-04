@@ -17,7 +17,7 @@ public_html/
 
 ## Пошаговая настройка
 
-## Сценарий 1: у вас нет проекта в IDE, пустой сервер, нет GitHub репозитория
+## Сценарий 1: у вас пустой сервер, нет GitHub репозитория
 
 ### 1. Создание нового репозитория
 В правом самом верхнем углу этого репозитория нажмите кнопку Use this tepmlate -> Create new repository
@@ -40,7 +40,7 @@ public_html/
 
 И выполните эту команду изменив user_name на ваше имя пользователь в гитхаб, вместо token вставьте ваш токен, который вы получили на предыдущем шаге, вместо repository_name вставьте название своего репозитория который вы создали на предыдущем шаге:
 ```bash
-git clone https://user_name:token@github.com/user_name/repository_name.git .
+git clone https://user_name:token@github.com/user_name/repository_name.git
 ```
 
 ### 3. Создание .env файла
@@ -107,7 +107,8 @@ git pull https://user_name:your_token@github.com/user_name/repository_name.git m
 phpinfo();
 ```
 и запушьте изменения на GitHub
-
+=====================================================
+## Сценарий 2: у вас есть не пустой сервер
 
 ### 2. Настройка файлов на сервере
 
