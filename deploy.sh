@@ -5,6 +5,17 @@ if [[ -z "$PATH_TO_REPO_DIR" ]]; then
   PATH_TO_REPO_DIR=$(pwd)
 fi
 
+ENV_FILE="$PATH_TO_REPO_DIR/.env"
+
+if [[ -f "$ENV_FILE" ]]; then
+  set -a
+  source "$ENV_FILE"
+  set +a
+else
+  echo "[ERROR] .env файл не найден по пути: $ENV_FILE"
+  exit 1
+fi
+
 LOG="$PATH_TO_LOG_FILE"
 REPO_DIR="$PATH_TO_REPO_DIR"
 REMOTE_URL="$REMOTE_URL_REPO"
