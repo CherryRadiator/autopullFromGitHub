@@ -48,7 +48,7 @@ git clone https://user_name:token@github.com/user_name/repository_name.git .
 Переименуйте файл на сервере ".env.example" в ".env" со следующим содержимым
 
 **Важно**: Замените следующие значения на свои:
-- `your_secret_key_here` -> секретный ключ из настроек webhook'а
+- `your_secret_key_here` -> Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
 - `/home/path/to/your/directory/` -> путь к вашему проекту
 - `/home/path/to/your/directory/run_deploy.sh` -> путь к файлу run_deploy.sh
 - `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
@@ -59,7 +59,7 @@ git clone https://user_name:token@github.com/user_name/repository_name.git .
 # Путь к директории с репозиторием (на beget это обычно public_html; он выглядит примерно так: /home/user/yourdomain/public_html) (чтобы узнать полный путь к директории репозитория можно использовать команду pwd из директории вашего public_html)
 PATH_TO_REPO_DIR=/home/path/to/your/directory/
 
-# GitHub Webhook секрет Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов) (он нам понадобиться позже)
+# GitHub Webhook секрет (он нам понадобиться позже для настроек webhook'а)
 GITHUB_WEBHOOK_SECRET=your_secret_key_here
 
 # Путь к скрипту run_deploy.sh
@@ -82,7 +82,7 @@ NAME_OF_BRANCH=master
 Выполните следющие комнады в директории вашего проекта на локальном компьютере (обратите внимание, вы должны опять использовать URL вашего GitHub репозитория, где вы заменили имя пользователя, токен и имя репозитория)
 ```bash
 git init
-git pull https://user_name:your_token@github.com/user_name/repository_name.git .
+git pull https://user_name:your_token@github.com/user_name/repository_name.git master
 ```
 Удалите файл .env.example, он больше не нужен на локальной машине
 
