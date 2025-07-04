@@ -42,13 +42,13 @@ public_html/
 GITHUB_WEBHOOK_SECRET=your_secret_key_here
 
 # Путь к скрипту run_deploy.sh
-PATH_TO_RUN_DEPLOY=/home/path/to/your/run_deploy.sh
+PATH_TO_RUN_DEPLOY=/home/path/to/your/directory/run_deploy.sh
 
 # Путь к скрипту deploy.sh
-PATH_TO_DEPLOY_SCRIPT=/home/path/to/your/deploy.sh
+PATH_TO_DEPLOY_SCRIPT=/home/path/to/your/directory/deploy.sh
 
 # Путь к лог файлу
-PATH_TO_LOG_FILE=/home/path/to/your/deploy_log.txt
+PATH_TO_LOG_FILE=/home/path/to/your/directory/deploy_log.txt
 
 # Путь к директории с репозиторием (на beget это обычно public_html; он выглядит примерно так: /home/user/yourdomain/public_html) (чтобы узнать полный путь к директории репозитория можно использовать команду pwd из директории вашего public_html)
 PATH_TO_REPO_DIR=/home/path/to/your/directory/
