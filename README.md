@@ -50,11 +50,12 @@ git clone https://user_name:token@github.com/user_name/repository_name.git
 **Важно**: Замените следующие значения на свои:
 - `your_secret_key_here` -> Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
 - `/home/path/to/your/directory/` -> путь к вашему проекту
-- `/home/path/to/your/directory/run_deploy.sh` -> путь к файлу run_deploy.sh
-- `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
-- `/home/path/to/your/directory/deploy_log.txt` -> путь к файлу с логами
+- `/home/path/to/your/directory/repository_name/run_deploy.sh` -> путь к файлу run_deploy.sh
+- `/home/path/to/your/directory/repository_name/deploy.sh` -> путь к файлу deploy.sh
+- `/home/path/to/your/directory/repository_name/deploy_log.txt` -> путь к файлу с логами
 - `https://user_name:your_token@github.com/user_name/repository_name.git` -> URL вашего репозитория; user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
 - `master` -> название ветки
+- Обратите внимание, в путях к файлам *.sh и пути к файлу с логами нужно добавить имя вашего репозитория
 ```bash
 # Путь к директории с репозиторием (на beget это обычно public_html; он выглядит примерно так: /home/user/yourdomain/public_html) (чтобы узнать полный путь к директории репозитория можно использовать команду pwd из директории вашего public_html)
 PATH_TO_REPO_DIR=/home/path/to/your/directory/
@@ -82,7 +83,7 @@ NAME_OF_BRANCH=master
 Выполните следющие комнады в директории вашего проекта на локальном компьютере (обратите внимание, вы должны опять использовать URL вашего GitHub репозитория, где вы заменили имя пользователя, токен и имя репозитория)
 ```bash
 git init
-git pull https://user_name:your_token@github.com/user_name/repository_name.git master
+git clone https://user_name:your_token@github.com/user_name/repository_name.git
 ```
 Удалите файл .env.example, он больше не нужен на локальной машине
 
