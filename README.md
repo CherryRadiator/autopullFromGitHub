@@ -17,20 +17,28 @@ public_html/
 
 ## Пошаговая настройка
 
+
 ### 1. Создание webhook'а в GitHub
 
-1. Откройте ваш репозиторий на GitHub
+1. Откройте илии создайте, если еще нет ваш репозиторий на GitHub
 2. Перейдите в **Settings** → **Webhooks**
 3. Нажмите **Add webhook**
 4. Заполните поля:
-   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к файлу "deploy.php" на сервере
+   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к вашему файлу "deploy.php" на сервере
    - **Content type**: `application/json`
    - **Secret**: Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
+   - **SSL verification**: Enable SSL verification
    - **Which events would you like to trigger this webhook?**: Выберите "Just the push event"
    - **Active**: Поставьте галочку
 5. Нажмите **Add webhook**
 
 ### 2. Настройка файлов на сервере
+
+#### Если ваша директория еще пуста
+просто введите эту команду в терминале в директории вашего проекта:
+```bash
+git clone https://github.com/CherryRadiator/autopullFromGitHub.git .
+```
 
 #### 2.1 Создание .env файла
 
@@ -41,19 +49,19 @@ public_html/
 GITHUB_WEBHOOK_SECRET=your_secret_key_here
 
 # Путь к скрипту run_deploy.sh
-PATH_TO_RUN_DEPLOY=/home/path/to/your/run_deploy.sh
+PATH_TO_RUN_DEPLOY=/home/path/to/your/directory/run_deploy.sh
 
 # Путь к скрипту deploy.sh
-PATH_TO_DEPLOY_SCRIPT=/home/path/to/your/deploy.sh
+PATH_TO_DEPLOY_SCRIPT=/home/path/to/your/directory/deploy.sh
 
 # Путь к лог файлу
-PATH_TO_LOG_FILE=/home/path/to/your/deploy_log.txt
+PATH_TO_LOG_FILE=/home/path/to/your/directory/deploy_log.txt
 
-# Путь к директории с репозиторием
+# Путь к директории с репозиторием (на beget это обычно public_html; он выглядит примерно так: /home/user/yourdomain/public_html) (чтобы узнать полный путь к директории репозитория можно использовать команду pwd из директории вашего public_html)
 PATH_TO_REPO_DIR=/home/path/to/your/directory/
 
 # URL вашего GitHub репозитория (рекомендуется использовать https доступ с токеном, если репозиторий приватный*)
-REMOTE_URL_REPO=https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git
+REMOTE_URL_REPO=https://user_name:your_token@github.com/user_name/repository_name.git
 
 # Название ветки для деплоя
 NAME_OF_BRANCH=master
@@ -64,20 +72,27 @@ NAME_OF_BRANCH=master
 3. Откройте Developer Settings: прокрутите ниже -> нажмите на Developer Settings
 4. Настроить персональный токен: нажмите "Personal access tokens" -> "Tokens (classic)"
 5. Сгенерируйте новый токен: нажмите "Generate new token" -> "Generate new token (classic)"
-6. Настройте парматеры токена: Name (например repo-access), Expiration (как долго этот токен будет активен), Scopes (как минимум выберите repo (полный контроль над репозиторием)) 
+6. Настройте парматеры токена: Note (например repo-access), Expiration (как долго этот токен будет активен), Scopes (как минимум выберите repo (полный контроль над репозиторием))
+7. Прокрутите вниз и нажмите Generate token
+8. Скопируйте токен и сохраните в надежном месте, ведь больше он не появиться
 
 **Важно**: Замените следующие значения на свои:
 - `your_secret_key_here` -> секретный ключ из настроек webhook'а
 - `/home/path/to/your/directory/` -> путь к вашему проекту
-- `/home/path/to/your/run_deploy.sh` -> путь к файлу run_deploy.sh
-- `/home/path/to/your/deploy.sh` -> путь к файлу deploy.sh
-- `/home/path/to/your/deploy_log.txt` -> путь к файлу с логами
-- `https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git` -> URL вашего репозитория
-- `master` -> название ветки (если используете не master)
+- `/home/path/to/your/directory/run_deploy.sh` -> путь к файлу run_deploy.sh
+- `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
+- `/home/path/to/your/directory/deploy_log.txt` -> путь к файлу с логами
+- `https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git` -> URL вашего репозитория; user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
+- `master` -> название ветки
 
 #### 2.2 Создание лог файла
 
 Создайте пустой файл для логов в директории вашего проекта:
+
+```bash
+deploy_log.txt
+```
+или командой для терминала:
 
 ```bash
 touch deploy_log.txt
@@ -85,14 +100,14 @@ touch deploy_log.txt
 
 ### 3. Установка прав доступа
 
-Выполните следующие команды в директории с проектом:
+Выполните следующие команды в директории с проектом в терминале:
 
 ```bash
 # Права для конфигурационного файла и лог файла
-chmod 664 .env deploy_log.txt
+chmod 777 .env deploy_log.txt
 
 # Права для исполняемых скриптов
-chmod +x deploy.sh run_deploy.sh
+chmod 777 deploy.sh run_deploy.sh && chmod +x deploy.sh run_deploy.sh
 ```
 
 ### 4. Проверка настроек
