@@ -80,14 +80,12 @@ if (!$safe_path) {
     exit('Invalid deploy script path');
 }
 
-echo "Running deploy script: " . $safe_path . "\n";
-
 // Запускаем bash-скрипт
 exec("chmod +x " . escapeshellarg($safe_path));
 exec(escapeshellarg($safe_path) . " 2>&1", $output, $return_var);
 
 // Выводим результат
-echo "\n\nReturn code: $return_var\n";
+echo "\nReturn code: $return_var\n";
 echo "Output:\n";
 print_r($output);
 
