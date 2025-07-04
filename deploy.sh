@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ -z "$PATH_TO_REPO_DIR" ]]; then
+  echo "[WARN] PATH_TO_REPO_DIR не установлен. Использую текущую папку."
+  PATH_TO_REPO_DIR=$(pwd)
+fi
+
 LOG="$PATH_TO_LOG_FILE"
 REPO_DIR="$PATH_TO_REPO_DIR"
 REMOTE_URL="$REMOTE_URL_REPO"
