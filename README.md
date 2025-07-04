@@ -17,36 +17,49 @@ public_html/
 
 ## Пошаговая настройка
 
+## Сценарий 1: у вас нет проекта в IDE, пустой сервер, нет GitHub репозитория
 
-### 1. Создание webhook'а в GitHub
+### 1. Создание нового репозитория
+В правом верхнем углу этого репозитория нажмите кнопку Use this tepmlate -> Create new repository
+Это отправит вас на страницу создания репозитория
 
-1. Откройте илии создайте, если еще нет ваш репозиторий на GitHub
-2. Перейдите в **Settings** → **Webhooks**
-3. Нажмите **Add webhook**
-4. Заполните поля:
-   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к вашему файлу "deploy.php" на сервере (замените yourdomain.com на ваш домен)
-   - **Content type**: `application/json`
-   - **Secret**: Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
-   - **SSL verification**: Enable SSL verification
-   - **Which events would you like to trigger this webhook?**: Выберите "Just the push event"
-   - **Active**: Поставьте галочку
-5. Нажмите **Add webhook**
+Если ваш репозиторий приватный, вам понадобиться персональный токен доступа (Personal access token)
+Если у вас еще нет этого токена следуйте этим шагам:
+1. Откройте GitHub: https://github.com
+2. Откройте ваши настройки: нажмите на фото профиля в правом верхнем углу -> Settings
+3. Откройте Developer Settings: прокрутите ниже -> нажмите на Developer Settings
+4. Настроить персональный токен: нажмите "Personal access tokens" -> "Tokens (classic)"
+5. Сгенерируйте новый токен: нажмите "Generate new token" -> "Generate new token (classic)"
+6. Настройте парматеры токена: Note (например repo-access), Expiration (как долго этот токен будет активен), Scopes (как минимум выберите repo (полный контроль над репозиторием))
+7. Прокрутите вниз и нажмите Generate token
+8. Скопируйте токен и сохраните в надежном месте, ведь больше он не появиться
 
-### 2. Настройка файлов на сервере
+### 2. Клонирование репозитория на сервер
+Зайдите в терминал вашего хостинга удобным для вас способом
+Перейдите в директорию вашего проекта (пример для beget: home/user/yourdomain/public_html/)
 
-#### Если ваша директория еще пуста
-просто введите эту команду на сервере в терминале в директории вашего проекта:
+И выполните эту команду изменив user_name на ваше имя пользователь в гитхаб, вместо token вставьте ваш токен, который вы получили на предыдущем шаге, вместо repository_name вставьте название своего репозитория который вы создали на предыдущем шаге:
 ```bash
-git clone https://github.com/CherryRadiator/autopullFromGitHub.git .
+git clone https://user_name:token@github.com/user_name/repository_name.git .
 ```
-а так же, удобным для вас способом скопируйте файлы в вашу среду разработки (можете использовать эту же команду, но в терминале вашего компьютера)
 
-#### 2.1 Создание .env файла
+### 3. Создание .env файла
 
-Создайте файл `.env` в корне вашего проекта со следующим содержимым:
+Переименуйте файл на сервере ".env.example" в ".env" со следующим содержимым
 
+**Важно**: Замените следующие значения на свои:
+- `your_secret_key_here` -> секретный ключ из настроек webhook'а
+- `/home/path/to/your/directory/` -> путь к вашему проекту
+- `/home/path/to/your/directory/run_deploy.sh` -> путь к файлу run_deploy.sh
+- `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
+- `/home/path/to/your/directory/deploy_log.txt` -> путь к файлу с логами
+- `https://user_name:your_token@github.com/user_name/repository_name.git` -> URL вашего репозитория; user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
+- `master` -> название ветки
 ```bash
-# GitHub Webhook секрет (тот же, что указали в настройках webhook'а)
+# Путь к директории с репозиторием (на beget это обычно public_html; он выглядит примерно так: /home/user/yourdomain/public_html) (чтобы узнать полный путь к директории репозитория можно использовать команду pwd из директории вашего public_html)
+PATH_TO_REPO_DIR=/home/path/to/your/directory/
+
+# GitHub Webhook секрет Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов) (он нам понадобиться позже)
 GITHUB_WEBHOOK_SECRET=your_secret_key_here
 
 # Путь к скрипту run_deploy.sh
@@ -58,33 +71,53 @@ PATH_TO_DEPLOY_SCRIPT=/home/path/to/your/directory/deploy.sh
 # Путь к лог файлу
 PATH_TO_LOG_FILE=/home/path/to/your/directory/deploy_log.txt
 
-# Путь к директории с репозиторием (на beget это обычно public_html; он выглядит примерно так: /home/user/yourdomain/public_html) (чтобы узнать полный путь к директории репозитория можно использовать команду pwd из директории вашего public_html)
-PATH_TO_REPO_DIR=/home/path/to/your/directory/
-
-# URL вашего GitHub репозитория (рекомендуется использовать https доступ с токеном, если репозиторий приватный*)
+# URL вашего GitHub репозитория (рекомендуется использовать https доступ с токеном, если репозиторий приватный)
 REMOTE_URL_REPO=https://user_name:your_token@github.com/user_name/repository_name.git
 
 # Название ветки для деплоя
 NAME_OF_BRANCH=master
 ```
-*для получения токена следуйте этим шагам:
-1. Откройте GitHub: https://github.com
-2. Откройте ваши настройки: нажмите на фото профиля в правом верхнем углу -> Settings
-3. Откройте Developer Settings: прокрутите ниже -> нажмите на Developer Settings
-4. Настроить персональный токен: нажмите "Personal access tokens" -> "Tokens (classic)"
-5. Сгенерируйте новый токен: нажмите "Generate new token" -> "Generate new token (classic)"
-6. Настройте парматеры токена: Note (например repo-access), Expiration (как долго этот токен будет активен), Scopes (как минимум выберите repo (полный контроль над репозиторием))
-7. Прокрутите вниз и нажмите Generate token
-8. Скопируйте токен и сохраните в надежном месте, ведь больше он не появиться
 
-**Важно**: Замените следующие значения на свои:
-- `your_secret_key_here` -> секретный ключ из настроек webhook'а
-- `/home/path/to/your/directory/` -> путь к вашему проекту
-- `/home/path/to/your/directory/run_deploy.sh` -> путь к файлу run_deploy.sh
-- `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
-- `/home/path/to/your/directory/deploy_log.txt` -> путь к файлу с логами
-- `https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git` -> URL вашего репозитория; user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
-- `master` -> название ветки
+### 4. Загрузка (pull) репозиторя на локальный компьютер
+Выполните следющие комнады в директории вашего проекта на локальном компьютере (обратите внимание, вы должны опять использовать URL вашего GitHub репозитория, где вы заменили имя пользователя, токен и имя репозитория)
+```bash
+git init
+git pull https://user_name:your_token@github.com/user_name/repository_name.git .
+```
+Удалите файл .env.example, он больше не нужен на локальной машине
+
+### 5. Создание webhook'а в GitHub
+
+1. Откройте илии создайте, если еще нет ваш репозиторий на GitHub
+2. Перейдите в **Settings** → **Webhooks**
+3. Нажмите **Add webhook**
+4. Заполните поля:
+   - **Payload URL**: `https://yourdomain.com/deploy.php` путь к вашему файлу "deploy.php" на сервере (замените yourdomain.com на ваш домен)
+   - **Content type**: `application/json`
+   - **Secret**: Тот самый секрет из файла .env -> "GITHUB_WEBHOOK_SECRET=your_secret_key_here"
+   - **SSL verification**: Enable SSL verification
+   - **Which events would you like to trigger this webhook?**: Выберите "Just the push event"
+   - **Active**: Поставьте галочку
+5. Нажмите **Add webhook**
+
+### 6. Проверка (push)
+На локальном компьютере выполните какие-нибудь изменения (кроме файлов, которые вы притянули из репозитория), например создайте файл index.php со следующим содержимым:
+```php
+<?php
+phpinfo();
+```
+и запушьте изменения на GitHub
+
+
+### 2. Настройка файлов на сервере
+
+#### Если ваша директория еще пуста
+просто введите эту команду на сервере в терминале в директории вашего проекта:
+```bash
+git clone https://github.com/CherryRadiator/autopullFromGitHub.git .
+```
+а так же, удобным для вас способом скопируйте файлы в вашу среду разработки (можете использовать эту же команду, но в терминале вашего компьютера)
+
 
 #### 2.2 Создание лог файла
 
