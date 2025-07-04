@@ -17,11 +17,6 @@ public_html/
 
 ## Пошаговая настройка
 
-### Если ваша директория еще пуста
-просто введите эту команду в терминале в директории вашего проекта:
-```bash
-git clone https://github.com/CherryRadiator/autopullFromGitHub.git .
-```
 
 ### 1. Создание webhook'а в GitHub
 
@@ -38,6 +33,12 @@ git clone https://github.com/CherryRadiator/autopullFromGitHub.git .
 5. Нажмите **Add webhook**
 
 ### 2. Настройка файлов на сервере
+
+#### Если ваша директория еще пуста
+просто введите эту команду в терминале в директории вашего проекта:
+```bash
+git clone https://github.com/CherryRadiator/autopullFromGitHub.git .
+```
 
 #### 2.1 Создание .env файла
 
