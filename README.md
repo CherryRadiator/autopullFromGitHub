@@ -65,14 +65,16 @@ NAME_OF_BRANCH=master
 3. Откройте Developer Settings: прокрутите ниже -> нажмите на Developer Settings
 4. Настроить персональный токен: нажмите "Personal access tokens" -> "Tokens (classic)"
 5. Сгенерируйте новый токен: нажмите "Generate new token" -> "Generate new token (classic)"
-6. Настройте парматеры токена: Name (например repo-access), Expiration (как долго этот токен будет активен), Scopes (как минимум выберите repo (полный контроль над репозиторием)) 
+6. Настройте парматеры токена: Note (например repo-access), Expiration (как долго этот токен будет активен), Scopes (как минимум выберите repo (полный контроль над репозиторием))
+7. Прокрутите вниз и нажмите Generate token
+8. Скопируйте токен и сохраните в надежном месте, ведь больше он не появиться
 
 **Важно**: Замените следующие значения на свои:
 - `your_secret_key_here` -> секретный ключ из настроек webhook'а
 - `/home/path/to/your/directory/` -> путь к вашему проекту
-- `/home/path/to/your/run_deploy.sh` -> путь к файлу run_deploy.sh
-- `/home/path/to/your/deploy.sh` -> путь к файлу deploy.sh
-- `/home/path/to/your/deploy_log.txt` -> путь к файлу с логами
+- `/home/path/to/your/directory/run_deploy.sh` -> путь к файлу run_deploy.sh
+- `/home/path/to/your/directory/deploy.sh` -> путь к файлу deploy.sh
+- `/home/path/to/your/directory/deploy_log.txt` -> путь к файлу с логами
 - `https://<user_name>:<your_token>@github.com/<user_name>/<repository_name>.git` -> URL вашего репозитория
 - `master` -> название ветки (если используете не master)
 
