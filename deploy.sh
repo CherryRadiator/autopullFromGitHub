@@ -37,8 +37,17 @@ fi
 echo "[INFO] Remote added" >> "$LOG"
 
 # Жёсткий сброс и удаление неотслеживаемых файлов
-git -c safe.directory="$REPO_DIR" reset --hard >> "$LOG" 2>&1
-git -c safe.directory="$REPO_DIR" clean -fd >> "$LOG" 2>&1
+cd "$REPO_DIR" || exit 1
+
+echo "[deploy] Сохраняем изменения в stash..." >> "$LOG"
+git stash save "auto-stash before deploy" >> "$LOG" 2>&1
+
+echo "[deploy] Обновляем код из репозитория..." >> "$LOG"
+git pull origin main >> "$LOG" 2>&1
+
+echo "[deploy] Восстанавливаем локальные изменения..." >> "$LOG"
+git stash pop >> "$LOG" 2>&1
+
 echo "[INFO] Reset and clean done" >> "$LOG"
 
 git -c safe.directory="$REPO_DIR" pull origin "$BRANCH" >> "$LOG" 2>&1
