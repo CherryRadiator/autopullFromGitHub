@@ -45,7 +45,7 @@ echo "[deploy] Сохраняем изменения в stash..." >> "$LOG"
 git stash save "auto-stash before deploy" >> "$LOG" 2>&1
 
 echo "[deploy] Обновляем код из репозитория..." >> "$LOG"
-git pull origin main >> "$LOG" 2>&1
+git pull origin "$BRANCH" >> "$LOG" 2>&1
 
 echo "[deploy] Восстанавливаем локальные изменения..." >> "$LOG"
 git stash pop >> "$LOG" 2>&1
