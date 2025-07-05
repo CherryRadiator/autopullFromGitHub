@@ -25,4 +25,4 @@ cd "$PATH_TO_REPO_DIR" || {
 cd "$PATH_TO_CURRENT_DIR"
 
 # Запуск скрипта деплоя
-"$PATH_TO_DEPLOY_SCRIPT"
+"$PATH_TO_CURRENT_DIR/deploy.sh"

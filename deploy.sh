@@ -11,7 +11,7 @@ else
   exit 1
 fi
 
-LOG="$PATH_TO_REPO_DIR/autopullFromGitHub/"
+LOG="$PATH_TO_REPO_DIR/autopullFromGitHub/deploy_log.txt"
 REPO_DIR="$PATH_TO_REPO_DIR"
 REMOTE_URL="$REMOTE_URL_REPO"
 BRANCH="$NAME_OF_BRANCH"
