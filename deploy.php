@@ -65,7 +65,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 echo "Webhook verified successfully\n";
 
 // Получаем путь к скрипту деплоя
-$run_deploy_path = $_ENV['PATH_TO_REPO_DIR'] . '/autoPullFromGitHub' ?? __DIR__ . '/run_deploy.sh';
+$run_deploy_path = $_ENV['PATH_TO_REPO_DIR'] . '/autopullFromGitHub' ?? __DIR__ . '/run_deploy.sh';
 
 // Проверяем существование скрипта
 if (!file_exists($run_deploy_path)) {
