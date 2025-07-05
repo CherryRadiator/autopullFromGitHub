@@ -1,5 +1,3 @@
-.env
-deploy_log.txt
 commitAndPush.sh
 autopullFromGitHub/deploy.sh
 autopullFromGitHub/deploy.php
