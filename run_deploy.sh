@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Путь к .env относительно текущего скрипта
-ENV_PATH="$(dirname "$0")/.env"
+ENV_PATH="./.env"
 
 PATH_TO_CURRENT_DIR=$(pwd)
 
