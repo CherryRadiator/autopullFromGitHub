@@ -62,15 +62,15 @@ echo autopullFromGitHub/deploy_log.txt >> .gitignore
 ```
 
 ### Добавление персонального токена доступа
-Если ваш репозиторий приватный, вам понадобиться персональный токен доступа (Personal access token) 
+Если ваш репозиторий приватный, вам понадобиться персональный токен доступа (Personal fine-grained access token) 
 Если у вас еще нет этого токена следуйте этим шагам:
 
 1. Откройте GitHub: https://github.com
 2. Откройте ваши настройки: нажмите на фото профиля в правом верхнем углу -> Settings
 3. Откройте Developer Settings: прокрутите ниже -> нажмите на Developer Settings
-4. Настроить персональный токен: нажмите "Personal access tokens" -> "Tokens (classic)"
-5. Сгенерируйте новый токен: нажмите "Generate new token" -> "Generate new token (classic)"
-6. Настройте парматеры токена: Note (например repo-access), Expiration (как долго этот токен будет активен), Scopes (как минимум выберите repo (полный контроль над репозиторием))
+4. Настроить персональный токен: нажмите "Personal access tokens" -> "Fine-grained tokens"
+5. Сгенерируйте новый токен: нажмите "Generate new token" -> "Generate new token"
+6. Настройте парматеры токена: Name (например repo-access), Expiration (как долго этот токен будет активен), Repository access ->Only select repositories -> (Выберите репозиторий, к которому будет доступ у этого приложения), Пролистайте вниз и выберите Contents -> Read-only, Пролистайте еще ниже и убедитесь, что пункт Metadata установлен в Read-only, пролистайте ниже и нажмите Generate token
 7. Прокрутите вниз и нажмите Generate token
 9. Скопируйте токен и сохраните в надежном месте, ведь больше он не появиться
 
