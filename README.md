@@ -17,15 +17,16 @@ public_html/
 
 ## Пошаговая настройка
 ### Настройка сервера
-Все что необходимо сделать, чтобы этот скрипт работал, вам нужно скопировать эти команды и выполнить их в терминале в директории вашего проекта (пример для beget: /home/user/name/yourdomain/public_html)
+Все что необходимо сделать, чтобы этот скрипт работал: скопировать эти команды и выполнить их в терминале в директории вашего проекта (пример для beget: /home/user/name/yourdomain/public_html)
 ```bash
 git clone https://github.com/CherryRadiator/autopullFromGitHub.git
-cd autopullFromGitHub/
-rm -r .git
-cd ..
-echo -e "autopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
-cd autopullFromGitHub/
-mv .env.example .env
+rm -rf autopullFromGitHub/.git
+grep -qxF "autopullFromGitHub/deploy.sh" .gitignore || echo "autopullFromGitHub/deploy.sh" >> .gitignore
+grep -qxF "autopullFromGitHub/deploy.php" .gitignore || echo "autopullFromGitHub/deploy.php" >> .gitignore
+grep -qxF "autopullFromGitHub/run_deploy.sh" .gitignore || echo "autopullFromGitHub/run_deploy.sh" >> .gitignore
+grep -qxF "autopullFromGitHub/.env" .gitignore || echo "autopullFromGitHub/.env" >> .gitignore
+grep -qxF "autopullFromGitHub/deploy_log.txt" .gitignore || echo "autopullFromGitHub/deploy_log.txt" >> .gitignore
+mv autopullFromGitHub/.env.example autopullFromGitHub/.env
 
 ```
 
