@@ -23,7 +23,7 @@ git clone https://github.com/CherryRadiator/autopullFromGitHub.git
 cd autopullFromGitHub/
 rm -r .git
 cd ..
-echo "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt\n"
+echo "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt\n" >> .gitignore
 ```
 
 ### Добавление персонального токена доступа
