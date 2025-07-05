@@ -30,9 +30,32 @@ mv .env.example .env
 ```
 
 ### Настройка компьютера
-Выполните эту команду в терминале в директории своего проекта на компьютере
+Выполните эту команду в терминале в директории своего проекта на компьютере если у вас Unix терминал
 ```bash
 echo -e "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
+
+```
+
+Если вы используете PowerShell
+```ps
+@"
+autopullFromGitHub/deploy.sh
+autopullFromGitHub/deploy.php
+autopullFromGitHub/run_deploy.sh
+autopullFromGitHub/.env
+autopullFromGitHub/deploy_log.txt
+"@ >> .gitignore
+
+
+```
+
+Если используете cmd
+```cmd
+echo autopullFromGitHub/deploy.sh >> .gitignore
+echo autopullFromGitHub/deploy.php >> .gitignore
+echo autopullFromGitHub/run_deploy.sh >> .gitignore
+echo autopullFromGitHub/.env >> .gitignore
+echo autopullFromGitHub/deploy_log.txt >> .gitignore
 
 ```
 
