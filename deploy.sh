@@ -5,7 +5,9 @@ if [[ -z "$PATH_TO_REPO_DIR" ]]; then
   PATH_TO_REPO_DIR=$(pwd)
 fi
 
-ENV_FILE="$PATH_TO_REPO_DIR/.env"
+PATH_TO_CURRENT_DIR=$(pwd)
+
+ENV_FILE="$PATH_TO_CURRENT_DIR/.env"
 
 if [[ -f "$ENV_FILE" ]]; then
   set -a
