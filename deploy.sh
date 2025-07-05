@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [[ -z "$PATH_TO_REPO_DIR" ]]; then
-  echo "[WARN] PATH_TO_REPO_DIR не установлен. Использую текущую папку."
-  PATH_TO_REPO_DIR=$(pwd)
-fi
-
 PATH_TO_CURRENT_DIR=$(pwd)
 
 ENV_FILE="$PATH_TO_CURRENT_DIR/.env"
