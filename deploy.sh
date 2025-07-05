@@ -36,8 +36,10 @@ if [ $? -ne 0 ]; then
 fi
 echo "[INFO] Remote added" >> "$LOG"
 
-# Жёсткий сброс и удаление неотслеживаемых файлов
-cd "$REPO_DIR" || exit 1
+cd "$REPO_DIR" || {
+  echo "[ERROR] Can't cd into $REPO_DIR" >> "$LOG"
+  exit 1
+}
 
 echo "[deploy] Сохраняем изменения в stash..." >> "$LOG"
 git stash save "auto-stash before deploy" >> "$LOG" 2>&1
