@@ -21,6 +21,7 @@ public_html/
 ```bash
 git clone https://github.com/CherryRadiator/autopullFromGitHub.git
 rm -rf autopullFromGitHub/.git
+echo >> .gitignore
 grep -qxF "autopullFromGitHub/deploy.sh" .gitignore || echo "autopullFromGitHub/deploy.sh" >> .gitignore
 grep -qxF "autopullFromGitHub/deploy.php" .gitignore || echo "autopullFromGitHub/deploy.php" >> .gitignore
 grep -qxF "autopullFromGitHub/run_deploy.sh" .gitignore || echo "autopullFromGitHub/run_deploy.sh" >> .gitignore
