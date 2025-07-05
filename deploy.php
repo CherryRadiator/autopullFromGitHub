@@ -1,5 +1,5 @@
 <?php
-
+echo "start\n";
 // Простая загрузка .env файла
 $env_file = __DIR__ . '/.env';
 if (file_exists($env_file)) {
