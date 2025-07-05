@@ -24,6 +24,8 @@ cd autopullFromGitHub/
 rm -r .git
 cd ..
 echo "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt\n" >> .gitignore
+cd autopullFromGitHub/
+rm .gitignore
 ```
 
 ### Добавление персонального токена доступа
