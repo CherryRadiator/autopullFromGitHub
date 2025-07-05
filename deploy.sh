@@ -41,22 +41,14 @@ cd "$REPO_DIR" || {
   exit 6
 }
 
-echo "[deploy] Сохраняем изменения в stash..." >> "$LOG"
-git stash save "auto-stash before deploy" >> "$LOG" 2>&1
-
-echo "[deploy] Обновляем код из репозитория..." >> "$LOG"
-git pull origin "$BRANCH" >> "$LOG" 2>&1
-
-echo "[deploy] Восстанавливаем локальные изменения..." >> "$LOG"
-git stash pop >> "$LOG" 2>&1
-
-echo "[INFO] Reset and clean done" >> "$LOG"
-
-git -c safe.directory="$REPO_DIR" pull origin "$BRANCH" >> "$LOG" 2>&1
+git config pull.rebase true
+echo "[deploy] Обновляем код из репозитория с rebase..." >> "$LOG"
+git -c safe.directory="$REPO_DIR" pull --rebase origin "$BRANCH" >> "$LOG" 2>&1
 if [ $? -ne 0 ]; then
-  echo "[ERROR] Git pull failed" >> "$LOG"
+  echo "[ERROR] Git pull --rebase failed" >> "$LOG"
   exit 7
 fi
+
 echo "[INFO] Git pull complete" >> "$LOG"
 
 echo "===== DEPLOY END: $(date) =====" >> "$LOG"
