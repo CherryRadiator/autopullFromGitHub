@@ -33,6 +33,7 @@ mv .env.example .env
 Выполните эту команду в терминале в директории своего проекта на компьютере
 ```bash
 echo -e "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
+
 ```
 
 ### Добавление персонального токена доступа
