@@ -8,7 +8,7 @@ if [[ -f "$ENV_FILE" ]]; then
   set +a
 else
   echo "[ERROR] .env файл не найден по пути: $ENV_FILE"
-  exit 1
+  exit 3
 fi
 
 LOG="$PATH_TO_REPO_DIR/autopullFromGitHub/deploy_log.txt"
@@ -20,7 +20,7 @@ echo "===== DEPLOY START: $(date) =====" >> "$LOG"
 
 cd "$REPO_DIR" || {
   echo "[ERROR] Can't cd into $REPO_DIR" >> "$LOG"
-  exit 1
+  exit 4
 }
 
 rm -rf .git
@@ -32,13 +32,13 @@ echo "[INFO] Git init done" >> "$LOG"
 git -c safe.directory="$REPO_DIR" remote add origin "$REMOTE_URL" >> "$LOG" 2>&1
 if [ $? -ne 0 ]; then
   echo "[ERROR] Failed to add remote origin" >> "$LOG"
-  exit 1
+  exit 5
 fi
 echo "[INFO] Remote added" >> "$LOG"
 
 cd "$REPO_DIR" || {
   echo "[ERROR] Can't cd into $REPO_DIR" >> "$LOG"
-  exit 1
+  exit 6
 }
 
 echo "[deploy] Сохраняем изменения в stash..." >> "$LOG"
@@ -55,7 +55,7 @@ echo "[INFO] Reset and clean done" >> "$LOG"
 git -c safe.directory="$REPO_DIR" pull origin "$BRANCH" >> "$LOG" 2>&1
 if [ $? -ne 0 ]; then
   echo "[ERROR] Git pull failed" >> "$LOG"
-  exit 1
+  exit 7
 fi
 echo "[INFO] Git pull complete" >> "$LOG"
 

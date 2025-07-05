@@ -19,7 +19,7 @@ set +a
 # Переход в директорию проекта
 cd "$PATH_TO_REPO_DIR" || {
   echo "[ERROR] Не удалось перейти в $PATH_TO_REPO_DIR"
-  exit 1
+  exit 2
 }
 
 cd "$PATH_TO_CURRENT_DIR"
