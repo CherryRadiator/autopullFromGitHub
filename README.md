@@ -34,20 +34,39 @@ mv autopullFromGitHub/.env.example autopullFromGitHub/.env
 ### Настройка компьютера
 Выполните эту команду в терминале в директории своего проекта на компьютере если у вас Unix терминал
 ```bash
-echo -e "autopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
+for entry in \
+  "autopullFromGitHub/deploy.sh" \
+  "autopullFromGitHub/deploy.php" \
+  "autopullFromGitHub/run_deploy.sh" \
+  "autopullFromGitHub/.env" \
+  "autopullFromGitHub/deploy_log.txt"
+do
+  grep -qxF "$entry" .gitignore || echo "$entry" >> .gitignore
+done
 
 ```
 
 Если вы используете PowerShell
 ```ps
-@"
-autopullFromGitHub/deploy.sh
-autopullFromGitHub/deploy.php
-autopullFromGitHub/run_deploy.sh
-autopullFromGitHub/.env
-autopullFromGitHub/deploy_log.txt
-"@ >> .gitignore
+$entries = @(
+  "autopullFromGitHub/deploy.sh",
+  "autopullFromGitHub/deploy.php",
+  "autopullFromGitHub/run_deploy.sh",
+  "autopullFromGitHub/.env",
+  "autopullFromGitHub/deploy_log.txt"
+)
 
+$gitignorePath = ".gitignore"
+
+if (-not (Test-Path $gitignorePath)) {
+  New-Item $gitignorePath -ItemType File -Force | Out-Null
+}
+
+foreach ($entry in $entries) {
+  if (-not (Select-String -Path $gitignorePath -Pattern "^$entry$" -Quiet)) {
+    Add-Content $gitignorePath $entry
+  }
+}
 
 ```
 
