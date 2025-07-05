@@ -3,6 +3,8 @@
 # Путь к .env относительно текущего скрипта
 ENV_PATH="$(dirname "$0")/.env"
 
+PATH_TO_CURRENT_DIR=$(pwd)
+
 # Проверка существования
 if [ ! -f "$ENV_PATH" ]; then
   echo "[ERROR] .env not найден по пути: $ENV_PATH"
@@ -19,6 +21,8 @@ cd "$PATH_TO_REPO_DIR" || {
   echo "[ERROR] Не удалось перейти в $PATH_TO_REPO_DIR"
   exit 1
 }
+
+cd "$PATH_TO_CURRENT_DIR"
 
 # Запуск скрипта деплоя
 "$PATH_TO_DEPLOY_SCRIPT"
