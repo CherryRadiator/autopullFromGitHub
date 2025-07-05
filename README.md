@@ -39,12 +39,16 @@ echo "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFro
 7. Прокрутите вниз и нажмите Generate token
 9. Скопируйте токен и сохраните в надежном месте, ведь больше он не появиться
 
-### Настройка переменно .env
+### Настройка переменной .env
 После этого вам нужно переименовать переменную ".env.example" в ".env" и поменять в ней значения:
-your_secret_key_here -> Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
-/home/path/to/your/directory/ -> путь к вашему проекту
-https://user_name:your_token@github.com/user_name/repository_name.git -> URL вашего репозитория; user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
-master -> название ветки
+
+- your_secret_key_here -> Придумайте надёжный секретный ключ (например, случайная строка из 32+ символов)
+
+- /home/path/to/your/directory/ -> путь к вашему проекту
+
+- https://user_name:your_token@github.com/user_name/repository_name.git -> URL вашего репозитория; user_name - имя пользователя на гитхабе, your_token - персональный токен на GitHub, repository_name - имя репозитория
+
+- master -> название ветки
 
 пример переменной .env:
 ```bash
