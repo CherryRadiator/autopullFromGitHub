@@ -1,8 +1,6 @@
 #!/bin/bash
 
-PATH_TO_CURRENT_DIR=$(pwd)
-
-ENV_FILE="$PATH_TO_CURRENT_DIR/.env"
+ENV_FILE="$PATH_TO_REPO_DIR/autoPullFromGitHub/.env"
 
 if [[ -f "$ENV_FILE" ]]; then
   set -a
@@ -13,7 +11,7 @@ else
   exit 1
 fi
 
-LOG="$PATH_TO_LOG_FILE"
+LOG="$PATH_TO_REPO_DIR/autoPullFromGitHub/"
 REPO_DIR="$PATH_TO_REPO_DIR"
 REMOTE_URL="$REMOTE_URL_REPO"
 BRANCH="$NAME_OF_BRANCH"
