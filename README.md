@@ -19,7 +19,6 @@ public_html/
 ### Настройка сервера
 Все что необходимо сделать, чтобы этот скрипт работал, вам нужно скопировать эти команды и выполнить их в терминале в директории вашего проекта (пример для beget: /home/user/name/yourdomain/public_html)
 ```bash
-git init
 git clone https://github.com/CherryRadiator/autopullFromGitHub.git
 cd autopullFromGitHub/
 rm -r .git
