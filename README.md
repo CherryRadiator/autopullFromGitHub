@@ -23,7 +23,7 @@ git clone https://github.com/CherryRadiator/autopullFromGitHub.git
 cd autopullFromGitHub/
 rm -r .git
 cd ..
-echo -e "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
+echo -e "autopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
 cd autopullFromGitHub/
 mv .env.example .env
 
