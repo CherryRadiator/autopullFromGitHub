@@ -25,7 +25,6 @@ rm -r .git
 cd ..
 echo -e "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
 cd autopullFromGitHub/
-rm .gitignore
 mv .env.example .env
 
 ```
