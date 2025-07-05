@@ -23,7 +23,7 @@ cd "$REPO_DIR" || {
   exit 4
 }
 
-rm -rf .git
+rm -rf .git .gitignore
 echo "[INFO] Old .git removed" >> "$LOG"
 
 git -c safe.directory="$REPO_DIR" init >> "$LOG" 2>&1

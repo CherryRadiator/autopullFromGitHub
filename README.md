@@ -32,7 +32,7 @@ mv .env.example .env
 ### Настройка компьютера
 Выполните эту команду в терминале в директории своего проекта на компьютере если у вас Unix терминал
 ```bash
-echo -e "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
+echo -e "autopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
 
 ```
 
