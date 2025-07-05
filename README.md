@@ -66,7 +66,7 @@ NAME_OF_BRANCH=master
 2. Перейдите в **Settings** → **Webhooks**
 3. Нажмите **Add webhook**
 4. Заполните поля:
-   - **Payload URL**: `https://yourdomain.com/repository_name/deploy.php` путь к вашему файлу "deploy.php" на сервере (замените yourdomain.com на ваш домен)
+   - **Payload URL**: `https://yourdomain.com/autopullFromGitHub/deploy.php` путь к вашему файлу "deploy.php" на сервере (замените yourdomain.com на ваш домен)
    - **Content type**: `application/json`
    - **Secret**: Тот самый секрет из файла .env -> "GITHUB_WEBHOOK_SECRET=your_secret_key_here"
    - **SSL verification**: Enable SSL verification
