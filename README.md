@@ -29,6 +29,12 @@ mv .env.example .env
 
 ```
 
+### Настройка компьютера
+Выполните эту команду в терминале в директории своего проекта на компьютере
+```bash
+echo -e "\nautopullFromGitHub/deploy.sh\nautopullFromGitHub/deploy.php\nautopullFromGitHub/run_deploy.sh\nautopullFromGitHub/.env\nautopullFromGitHub/deploy_log.txt" >> .gitignore
+```
+
 ### Добавление персонального токена доступа
 Если ваш репозиторий приватный, вам понадобиться персональный токен доступа (Personal access token) 
 Если у вас еще нет этого токена следуйте этим шагам:
