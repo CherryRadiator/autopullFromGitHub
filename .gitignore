@@ -3,4 +3,4 @@ autopullFromGitHub/deploy.sh
 autopullFromGitHub/deploy.php
 autopullFromGitHub/run_deploy.sh
 autopullFromGitHub/.env
-autopullFromGitHub/deploy_log.txt
+autopullFromGitHub/.deploy_log.txt
