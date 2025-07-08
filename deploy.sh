@@ -23,9 +23,10 @@ cd "$REPO_DIR" || {
   exit 4
 }
 
-# Очистка всех файлов и папок, кроме .env и autopullFromGitHub/
+# Очистка всех файлов и папок, кроме .gitignore .env и autopullFromGitHub/
 echo "[CLEAN] Cleaning working directory (excluding .env and autopullFromGitHub)..." >> "$LOG"
 find "$REPO_DIR" -mindepth 1 \
+  ! -name '.gitignore' \
   ! -name '.env' \
   ! -name 'autopullFromGitHub' \
   ! -path "$REPO_DIR/autopullFromGitHub/*" \
