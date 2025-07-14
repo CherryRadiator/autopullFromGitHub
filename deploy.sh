@@ -24,24 +24,24 @@ cd "$REPO_DIR" || {
 }
 
 # Очистка всех файлов и папок, кроме .gitignore .env и autopullFromGitHub/
-echo "[CLEAN] Cleaning working directory (excluding .env and autopullFromGitHub)..." >> "$LOG"
-find "$REPO_DIR" -mindepth 1 \
-  ! -name '.gitignore' \
-  ! -name '.env' \
-  ! -name 'autopullFromGitHub' \
-  ! -path "$REPO_DIR/autopullFromGitHub/*" \
-  -exec rm -rf {} + >> "$LOG" 2>&1
+# echo "[CLEAN] Cleaning working directory (excluding .env and autopullFromGitHub)..." >> "$LOG"
+# find "$REPO_DIR" -mindepth 1 \
+#   ! -name '.gitignore' \
+#   ! -name '.env' \
+#   ! -name 'autopullFromGitHub' \
+#   ! -path "$REPO_DIR/autopullFromGitHub/*" \
+#   -exec rm -rf {} + >> "$LOG" 2>&1
 
-# Инициализация git
-git -c safe.directory="$REPO_DIR" init >> "$LOG" 2>&1
-echo "[INFO] Git init done" >> "$LOG"
+# # Инициализация git
+# git -c safe.directory="$REPO_DIR" init >> "$LOG" 2>&1
+# echo "[INFO] Git init done" >> "$LOG"
 
-git -c safe.directory="$REPO_DIR" remote add origin "$REMOTE_URL" >> "$LOG" 2>&1
-if [ $? -ne 0 ]; then
-  echo "[ERROR] Failed to add remote origin" >> "$LOG"
-  exit 5
-fi
-echo "[INFO] Remote added" >> "$LOG"
+# git -c safe.directory="$REPO_DIR" remote add origin "$REMOTE_URL" >> "$LOG" 2>&1
+# if [ $? -ne 0 ]; then
+#   echo "[ERROR] Failed to add remote origin" >> "$LOG"
+#   exit 5
+# fi
+# echo "[INFO] Remote added" >> "$LOG"
 
 # Настройка rebase и получение кода
 git -c safe.directory="$REPO_DIR" config pull.rebase true
