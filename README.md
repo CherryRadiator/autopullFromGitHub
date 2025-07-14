@@ -37,11 +37,7 @@ echo -e "autopullFromGitHub/" >> .gitignore
 Если вы используете PowerShell
 ```ps
 @"
-autopullFromGitHub/deploy.sh
-autopullFromGitHub/deploy.php
-autopullFromGitHub/run_deploy.sh
-autopullFromGitHub/.env
-autopullFromGitHub/deploy_log.txt
+autopullFromGitHub/
 "@ >> .gitignore
 
 
@@ -49,11 +45,7 @@ autopullFromGitHub/deploy_log.txt
 
 Если используете cmd
 ```cmd
-echo autopullFromGitHub/deploy.sh >> .gitignore
-echo autopullFromGitHub/deploy.php >> .gitignore
-echo autopullFromGitHub/run_deploy.sh >> .gitignore
-echo autopullFromGitHub/.env >> .gitignore
-echo autopullFromGitHub/deploy_log.txt >> .gitignore
+echo autopullFromGitHub/ >> .gitignore
 
 ```
 
