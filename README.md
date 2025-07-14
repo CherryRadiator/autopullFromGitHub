@@ -22,11 +22,7 @@ public_html/
 git clone https://github.com/CherryRadiator/autopullFromGitHub.git
 rm -rf autopullFromGitHub/.git
 echo >> .gitignore
-grep -qxF "autopullFromGitHub/deploy.sh" .gitignore || echo "autopullFromGitHub/deploy.sh" >> .gitignore
-grep -qxF "autopullFromGitHub/deploy.php" .gitignore || echo "autopullFromGitHub/deploy.php" >> .gitignore
-grep -qxF "autopullFromGitHub/run_deploy.sh" .gitignore || echo "autopullFromGitHub/run_deploy.sh" >> .gitignore
-grep -qxF "autopullFromGitHub/.env" .gitignore || echo "autopullFromGitHub/.env" >> .gitignore
-grep -qxF "autopullFromGitHub/deploy_log.txt" .gitignore || echo "autopullFromGitHub/deploy_log.txt" >> .gitignore
+grep -qxF "autopullFromGitHub/deploy.sh" .gitignore || echo "autopullFromGitHub/" >> .gitignore
 mv autopullFromGitHub/.env.example autopullFromGitHub/.env
 
 ```
